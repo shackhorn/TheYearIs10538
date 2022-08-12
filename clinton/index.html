@@ -1,0 +1,55 @@
+<head>
+  <title>10538</title>
+  <script src="../js/confetti.min.js"></script>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+  <script>
+    window.onload = function() {
+    // Pass in the id of an element
+    let confetti = new Confetti("demo");
+
+    // Edit given parameters
+    confetti.setCount(100);
+    confetti.setSize(2);
+    confetti.setPower(100);
+    confetti.setFade(false);
+    confetti.destroyTarget(false); 
+    }
+    function doTheThing(){
+      document.getElementById("demo").style.color = "red";
+      document.getElementById("demo").innerText = "died";
+      
+    }
+    function submitForm(){
+      const formData = ($("#form").serializeArray())[0].value;
+
+      var encrypted = CryptoJS.AES.encrypt(formData, "mo");
+      // Redirect
+      window.location.href = "/image?data=" + encrypted;
+    }
+  </script>
+</head>
+
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    font-size: 50px;
+  }
+</style>
+<body>
+  <div >
+    <div>
+      <b>bill clinton has <a onclick="doTheThing()"><b id="demo" style="color: blue">???</b></a></b>
+      
+    </div>
+  </div>
+ 
+  
+  
+</body>
