@@ -17,14 +17,13 @@
 
 <style>
   body {
-    width: 100vw;
-    height: 100vh;
+
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     font-family: 'Comic Neue', cursive;
-    margin: auto;
+   
   }
   #PRETEXT {
     font-size: 30px;
@@ -46,7 +45,9 @@
     /* outline: 3px solid black; */
   }
   #DESCRIPTION {
-    font-size: 30px;
+    font-size: 20px;
+    word-wrap: break-word;
+   width: 100px;
   }
   .DIRECTIONALS {
     font-size: 40px;
@@ -58,26 +59,36 @@
     margin: 20px;
     cursor: pointer;
   }
+  .canvas {
+    width:100vw;
+    text-align: center;
+    align-items: center;
+    display:flex;
+  }
 </style>
 <body>
   <div>
     
     <button id="UP_ARROW" class="DIRECTIONALS" style="display: none">&nbsp;↑&nbsp;</button>
     <br/>
-    <div>
+    <div id="canvas">
+      <div style="width:30vw">
+
+      
       <span id="SHOW_PRETEXT"><sub id="PRETEXT"></sub></span>
       <br/>
       <span id="SHOW_TITLE"><b id="TITLE"></b></span>
       <br/>
-      <span id="SHOW_CHRONOLOGICAL"><sup id="CHRONOLOGICAL"></sup></span>
+      <span id="SHOW_CHRONOLOGICAL"><sup id="CHRONOLOGICAL">photosynthesising...</sup></span>
       <br/>
-      <span id="SHOW_LOCATION"><i class="fa-solid fa-location-dot"></i><sup id="LOCATION"></sup></span>
+      <span id="SHOW_LOCATION" style="display:inline-flex; align-items: center;"><i class="fa-solid fa-location-dot"></i>&nbsp;<sup id="LOCATION"></sup></span>
       <br/>
       <br/>
-      <span id="SHOW_IMAGE"><img id="MEDIA" src="../image/hillary.jpg"></span>
+      <span id="SHOW_IMAGE" ><img id="MEDIA" src="img/load.gif"></span>
       <br/>
       <br/>
       <span id="SHOW_DESCRIPTION"><small id="DESCRIPTION"></small></span>
+    </div>
     </div>
     <br/>
     <button id="DOWN_ARROW" class="DIRECTIONALS" style="display: none">&nbsp;↓&nbsp;</button>

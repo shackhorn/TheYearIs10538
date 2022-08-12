@@ -1,9 +1,9 @@
 window.onload = function () {
     $("#SHOW_MEDIA").hide();
     $("#SHOW_PRETEXT").hide();
-    $("#SHOW_TITLE").hide();
+    // $("#SHOW_TITLE").hide();
     $("#SHOW_DESCRIPTION").hide();
-    $("#SHOW_CHRONOLOGICAL").hide(); 
+    // $("#SHOW_CHRONOLOGICAL").hide(); 
     $("#SHOW_LOCATION").hide(); 
   var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -31,23 +31,29 @@ window.onload = function () {
   }).then(function (response) {
   
     const MEDIA_URL = response.data["MEDIA"].files[0]?.file.url;
-    if(MEDIA_URL) $("#SHOW_MEDIA").show();
+    $("#MEDIA").attr("src", MEDIA_URL??"");
     const PRETEXT = response.data["PRETEXT"].results[0]?.rich_text.plain_text;
-    if(PRETEXT) $("#SHOW_PRETEXT").show();
+    
     const TITLE = response.data["TITLE"].results[0]?.rich_text.plain_text;
-    if(TITLE) $("#SHOW_TITLE").show();
+
 
     const DESCRIPTION = response.data["DESCRIPTION"].results[0]?.rich_text.plain_text;
-    if(DESCRIPTION) $("#SHOW_DESCRIPTION").show();
+
     const LOCATION = response.data["LOCATION"].results[0]?.rich_text.plain_text;
-    if(LOCATION) $("#SHOW_LOCATION").show();
+  
     const CHRONOLOGICAL = response.data["CHRONOLOGICAL"].results[0]?.rich_text.plain_text;
+    
+    $("#PRETEXT").html(PRETEXT??"");
+    $("#TITLE").html(TITLE??"");
+    $("#DESCRIPTION").html(DESCRIPTION??"");
+    $("#CHRONOLOGICAL").html(CHRONOLOGICAL??"");
+    $("#LOCATION").html(LOCATION??"");
+    if(MEDIA_URL) $("#SHOW_MEDIA").show();
+    if(PRETEXT) $("#SHOW_PRETEXT").show();
+    if(TITLE) $("#SHOW_TITLE").show();
+    if(DESCRIPTION) $("#SHOW_DESCRIPTION").show();
+    if(LOCATION) $("#SHOW_LOCATION").show();
     if(CHRONOLOGICAL) $("#SHOW_CHRONOLOGICAL").show();
-    $("#MEDIA").attr("src", MEDIA_URL);
-    $("#PRETEXT").text(PRETEXT);
-    $("#TITLE").text(TITLE);
-    $("#DESCRIPTION").text(DESCRIPTION);
-    $("#CHRONOLOGICAL").text(CHRONOLOGICAL);
-    $("#LOCATION").text(LOCATION);
+
   });
 };
