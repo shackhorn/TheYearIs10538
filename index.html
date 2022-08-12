@@ -2,6 +2,7 @@
   <title>10538</title>
   <script src="js/confetti.min.js"></script>
   <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
   <script>
     window.onload = function() {
     // Pass in the id of an element
@@ -17,6 +18,13 @@
     function doTheThing(){
       document.getElementById("demo").style.color = "red";
       document.getElementById("demo").innerText = "died";
+      
+    }
+    function submitForm(){
+      const formData = ($("#form").serializeArray())[0].value;
+      var encrypted = CryptoJS.AES.encrypt(formData, "mo");
+      // Redirect
+      window.location.href = "image?pass=" + encrypted;
       
     }
   </script>
@@ -38,6 +46,10 @@
   <div >
     <div>
       <b>bill clinton has <a onclick="doTheThing()"><b id="demo" style="color: blue">???</b></a></b>
+      <form id="form">
+        <input type="password" id="pass" name="pass" ><br>
+        <input type="button" value="Find Out How" onclick="submitForm()">
+      </form> 
     </div>
   </div>
  

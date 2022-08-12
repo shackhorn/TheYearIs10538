@@ -26,11 +26,13 @@ window.onload = function () {
     }
     return false;
   };
-
-  var imgID = getUrlParameter("id");
+  
+  var guac = getUrlParameter("pass");
+  var decrypted = CryptoJS.AES.decrypt(guac, "mo").toString(CryptoJS.enc.Utf8);
+  console.log(decrypted.toString(CryptoJS.enc.Utf8))
   axios({
     method: "get",
-    url: `https://eo1kch7zxcopjza.m.pipedream.net?id=${imgID}`,
+    url: `https://eo1kch7zxcopjza.m.pipedream.net?id=${decrypted}`,
     responseType: "json",
   }).then(function (response) {
   
