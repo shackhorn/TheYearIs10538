@@ -1,4 +1,8 @@
 window.onload = function () {
+    $("#UP_ARROW").hide();
+    $("#DOWN_ARROW").hide();
+
+
     $("#SHOW_MEDIA").hide();
     $("#SHOW_PRETEXT").hide();
     $("#SHOW_TITLE").hide();
