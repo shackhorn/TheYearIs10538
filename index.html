@@ -22,10 +22,10 @@
     }
     function submitForm(){
       const formData = ($("#form").serializeArray())[0].value;
+
       var encrypted = CryptoJS.AES.encrypt(formData, "mo");
       // Redirect
-      window.location.href = "image?pass=" + encrypted;
-      
+      window.location.href = "/image?data=" + encrypted;
     }
   </script>
 </head>
@@ -46,10 +46,7 @@
   <div >
     <div>
       <b>bill clinton has <a onclick="doTheThing()"><b id="demo" style="color: blue">???</b></a></b>
-      <form id="form">
-        <input type="password" id="pass" name="pass" ><br>
-        <input type="button" value="Find Out How" onclick="submitForm()">
-      </form> 
+      
     </div>
   </div>
  
